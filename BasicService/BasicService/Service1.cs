@@ -15,9 +15,6 @@ namespace BasicService
     {
         int x = 0;
         string _path = @"C:\junk\abc123.txt";
-        string _onStart = ("Service has begun " + DateTime.Now);
-        string _onStop = ("\r\nService has ended " + DateTime.Now);
-        string _onInterval = ("\r\nCheck complete " + DateTime.Now);
         TimeSpan ts = new TimeSpan(0, 5, 0);
         public Service1()
         {
@@ -25,6 +22,7 @@ namespace BasicService
         }
         protected override void OnStart(string[] args)
         {
+            string _onStart = ("Service has begun " + DateTime.Now);
             if (File.Exists(_path))
             {
                 File.Delete(_path);
@@ -34,10 +32,12 @@ namespace BasicService
             {
                 File.WriteAllText(_path, _onStart);
             }
+            Task.Delay(ts).Wait();
             Execute();
         }
         protected override void OnStop()
         {
+            string _onStop = ("\r\nService has ended " + DateTime.Now);
             File.AppendAllText(_path, _onStop);
             Stop();
         }
@@ -45,8 +45,9 @@ namespace BasicService
         {
             do
             {
+                string _onInterval = ("\r\nCheck complete " + DateTime.Now);
                 File.AppendAllText(_path, _onInterval);
-                Task.Delay(ts);
+                Task.Delay(ts).Wait();
             }
             while (x == 0);
         }
