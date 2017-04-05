@@ -19,20 +19,20 @@ namespace BasicService
         public Service1()
         {
             InitializeComponent();
+            System.Timers.Timer _aTimer = new System.Timers.Timer(15000);
+            _aTimer.AutoReset = true;
+            _aTimer.Elapsed += Execute;
+            _aTimer.Start();
         }
         protected override void OnStart(string[] args)
         {
             string _onStart = (string.Format("Service has begun {0}", DateTime.Now));
-            // File.Exists(_path) ? File.Delete(_path);
             if (File.Exists(_path))
             {
                 File.Delete(_path);
             }
             File.WriteAllText(_path, _onStart);
-            System.Timers.Timer _aTimer = new System.Timers.Timer(15000);
-            _aTimer.AutoReset = true;
-            _aTimer.Elapsed += Execute;
-            _aTimer.Start();
+            
         }
         protected override void OnStop()
         {
