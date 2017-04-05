@@ -15,7 +15,7 @@ namespace BasicService
     public partial class Service1 : ServiceBase
     {
         private bool _isRunning = true;
-        string _path = @"C:\junk\abc123.txt";
+        string _path = Path.Combine(Directory.GetCurrentDirectory() + @"Log\abc123.txt");
         public Service1()
         {
             InitializeComponent();
