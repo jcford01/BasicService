@@ -8,15 +8,14 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace BasicService
 {
     public partial class Service1 : ServiceBase
     {
-        int x = 0;
-        private bool isrunning = true;
+        private bool _isRunning = true;
         string _path = @"C:\junk\abc123.txt";
-        TimeSpan ts = new TimeSpan(0, 5, 0);
         public Service1()
         {
             InitializeComponent();
@@ -24,41 +23,31 @@ namespace BasicService
         protected override void OnStart(string[] args)
         {
             string _onStart = (string.Format("Service has begun {0}", DateTime.Now));
+            // File.Exists(_path) ? File.Delete(_path);
             if (File.Exists(_path))
             {
                 File.Delete(_path);
-                File.WriteAllText(_path, _onStart);
             }
-            else
-            {
-                File.WriteAllText(_path, _onStart);
-            }
-            Task.Delay(ts).Wait();
-            Execute();
+            File.WriteAllText(_path, _onStart);
+            System.Timers.Timer _aTimer = new System.Timers.Timer(15000);
+            _aTimer.AutoReset = true;
+            _aTimer.Elapsed += Execute;
+            _aTimer.Start();
         }
         protected override void OnStop()
         {
-            x = 1;
-
-            while (isrunning)
+            while (_isRunning)
             {
-
             }
-
             string _onStop = ("\r\nService has ended " + DateTime.Now);
             File.AppendAllText(_path, _onStop);
-            Stop();
         }
-        public void Execute()
+        public void Execute(object sender, ElapsedEventArgs e)
         {
-            while (x == 0)
-            {
-                string _onInterval = ("\r\nCheck complete " + DateTime.Now);
-                File.AppendAllText(_path, _onInterval);
-                Task.Delay(ts).Wait();
-            };
-
-            isrunning = false;
+            _isRunning = true;
+            string _onInterval = ("\r\nCheck complete " + DateTime.Now);
+            File.AppendAllText(_path, _onInterval);
+            _isRunning = false;
         }
         public void Start(string[] args)
         {
