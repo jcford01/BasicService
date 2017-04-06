@@ -14,7 +14,7 @@ namespace BasicService
 {
     public partial class Service1 : ServiceBase
     {
-        private bool _isRunning = true;
+        private bool _isRunning = false;
         string _filePath = Path.Combine(Directory.GetCurrentDirectory(), "Log", "abc123.txt");
         string _directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "Log");
         System.Timers.Timer _aTimer = new System.Timers.Timer(15000);
