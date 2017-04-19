@@ -10,8 +10,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{DF3B
 		..\..\..\code\ATGV3-dev\ATGV3.WebJobs\ATGV3.WebJobs.Email\Scripts\ManageATGService.ps1 = ..\..\..\code\ATGV3-dev\ATGV3.WebJobs\ATGV3.WebJobs.Email\Scripts\ManageATGService.ps1
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchedulerService", "ConsoleApplication1\SchedulerService.csproj", "{5702812D-2E74-4BC7-8CFF-C36B7BED25DF}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,10 +20,6 @@ Global
 		{E7C13550-8DB9-4421-AC27-2408B56A7E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7C13550-8DB9-4421-AC27-2408B56A7E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7C13550-8DB9-4421-AC27-2408B56A7E85}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5702812D-2E74-4BC7-8CFF-C36B7BED25DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5702812D-2E74-4BC7-8CFF-C36B7BED25DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5702812D-2E74-4BC7-8CFF-C36B7BED25DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5702812D-2E74-4BC7-8CFF-C36B7BED25DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
